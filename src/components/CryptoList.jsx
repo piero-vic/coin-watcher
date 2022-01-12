@@ -11,6 +11,7 @@ const CryptoList = () => {
             <th className="p-2 text-left">#</th>
             <th className="p-2 text-left">Coin</th>
             <th className="p-2 text-right">Price</th>
+            <th className="p-2 text-right">24h %</th>
           </tr>
         </thead>
         <tbody>
