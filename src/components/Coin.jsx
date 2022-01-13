@@ -35,6 +35,7 @@ const Coin = (props) => {
           "en-US",
           {
             style: "percent",
+            minimumFractionDigits: 1,
             maximumFractionDigits: 1,
           }
         )}
