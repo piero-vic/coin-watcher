@@ -28,14 +28,14 @@ const CryptoList = () => {
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d"
   );
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  }
+  let content = null;
 
-  return (
-    <div className="p-5">
+  if (error) {
+    content = <div>Error: {error.message}</div>;
+  } else if (!isLoaded) {
+    content = <div>Loading...</div>;
+  } else {
+    content = (
       <table className="w-full rounded-lg">
         <thead className="bg-gray-100">
           <tr>
@@ -51,7 +51,11 @@ const CryptoList = () => {
           ))}
         </tbody>
       </table>
-    </div>
+    );
+  }
+
+  return (
+    <div className="p-5 grow flex justify-center items-center">{content}</div>
   );
 };
 
