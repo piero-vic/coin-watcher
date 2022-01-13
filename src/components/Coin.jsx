@@ -12,6 +12,9 @@ const Coin = (props) => {
     last,
   } = props;
 
+  const priceChangeColor = (priceChange) =>
+    priceChange > 0 ? "text-green-400" : "text-red-400";
+
   return (
     <tr className="bg-gray-50">
       <td className={`text-xs p-2 text-right ${last && "rounded-bl-lg"}`}>
@@ -30,11 +33,9 @@ const Coin = (props) => {
         })}
       </td>
       <td
-        className={`p-2 text-right ${
-          price_change_percentage_24h_in_currency > 0
-            ? "text-green-400"
-            : "text-red-400"
-        } ${last && "rounded-br-lg"}`}
+        className={`p-2 text-right ${priceChangeColor(
+          price_change_percentage_24h_in_currency
+        )} ${last && "rounded-br-lg"}`}
       >
         {(price_change_percentage_24h_in_currency / 100).toLocaleString(
           "en-US",
