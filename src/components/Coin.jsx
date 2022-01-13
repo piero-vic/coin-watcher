@@ -2,16 +2,21 @@ import React from "react";
 
 const Coin = (props) => {
   const {
-    image,
-    symbol,
-    current_price,
-    market_cap_rank,
-    price_change_percentage_24h_in_currency,
-  } = props.coinData;
+    coinData: {
+      image,
+      symbol,
+      current_price,
+      market_cap_rank,
+      price_change_percentage_24h_in_currency,
+    },
+    last,
+  } = props;
 
   return (
     <tr className="bg-gray-50">
-      <td className="text-xs p-2 text-right">{market_cap_rank}</td>
+      <td className={`text-xs p-2 text-right ${last && "rounded-bl-lg"}`}>
+        {market_cap_rank}
+      </td>
       <td className="flex p-2 text-right gap-2">
         <img className="w-6 h-6" src={image} alt="" />
         <span>{symbol.toUpperCase()}</span>
@@ -29,7 +34,7 @@ const Coin = (props) => {
           price_change_percentage_24h_in_currency > 0
             ? "text-green-400"
             : "text-red-400"
-        }`}
+        } ${last && "rounded-br-lg"}`}
       >
         {(price_change_percentage_24h_in_currency / 100).toLocaleString(
           "en-US",

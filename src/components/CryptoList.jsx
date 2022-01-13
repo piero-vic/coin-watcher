@@ -36,18 +36,22 @@ const CryptoList = () => {
     content = <div>Loading...</div>;
   } else {
     content = (
-      <table className="w-full rounded-lg">
+      <table className="w-full border-separate rounded-lg">
         <thead className="bg-gray-100">
           <tr>
-            <th className="p-2 text-right">#</th>
-            <th className="p-2 text-left">Coin</th>
-            <th className="p-2 text-right">Price</th>
-            <th className="p-2 text-right">24h %</th>
+            <th className="text-xs p-2 text-right rounded-tl-lg">#</th>
+            <th className="text-xs p-2 text-left">Coin</th>
+            <th className="text-xs p-2 text-right">Price</th>
+            <th className="text-xs p-2 text-right rounded-tr-lg">24h %</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((coinData) => (
-            <Coin coinData={coinData} key={coinData.id} />
+          {data.map((coinData, index) => (
+            <Coin
+              coinData={coinData}
+              key={coinData.id}
+              last={index === data.length - 1 ? true : false}
+            />
           ))}
         </tbody>
       </table>
