@@ -2,31 +2,44 @@ import React, { useEffect, useState } from "react";
 import Coin from "./Coin";
 import axios from "axios";
 
-const useFetch = (url) => {
+const CryptoList = () => {
   const [data, setData] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
+  const getData = () => {
+    axios
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d",
+        {
+          headers: {
+            "Cache-Control": "no-cache",
+            Pragma: "no-cache",
+            Expires: "0",
+          },
+        }
+      )
+      .then(
+        (res) => {
+          setData(res.data);
+          setIsLoaded(true);
+        },
+        (error) => {
+          setError(error);
+          setIsLoaded(true);
+        }
+      );
+  };
+
   useEffect(() => {
-    axios(url).then(
-      (res) => {
-        setData(res.data);
-        setIsLoaded(true);
-      },
-      (error) => {
-        setError(error);
-        setIsLoaded(true);
-      }
-    );
-  }, [url]);
+    getData();
 
-  return { data, isLoaded, error };
-};
+    const interval = setInterval(() => {
+      getData();
+    }, 90000);
 
-const CryptoList = () => {
-  const { data, isLoaded, error } = useFetch(
-    "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d"
-  );
+    return () => clearInterval(interval);
+  }, []);
 
   let content = null;
 
