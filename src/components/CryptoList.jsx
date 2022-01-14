@@ -44,27 +44,25 @@ const CryptoList = () => {
   let content = null;
 
   if (error) {
-    content = <div>Error: {error.message}</div>;
+    content = <div className="mx-auto">Error: {error.message}</div>;
   } else if (!isLoaded) {
-    content = <div>Loading...</div>;
+    content = <div className="mx-auto">Loading...</div>;
   } else {
     content = (
-      <table className="w-full border-separate rounded-lg">
+      <table className="w-full border-collapse">
         <thead className="bg-gray-100">
           <tr>
-            <th className="text-xs p-2 text-right rounded-tl-lg">#</th>
-            <th className="text-xs p-2 text-left">Coin</th>
-            <th className="text-xs p-2 text-right">Price</th>
-            <th className="text-xs p-2 text-right rounded-tr-lg">24h %</th>
+            <th className="p-2 text-xs text-right">#</th>
+            <th className="p-2 text-xs text-left">Coin</th>
+            <th className="p-2 text-xs text-right">Price</th>
+            <th className="p-2 text-xs text-right">24h %</th>
+            <th className="p-2 text-xs text-right">7d %</th>
+            <th className="p-2 text-xs text-right">Market Cap</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((coinData, index) => (
-            <Coin
-              coinData={coinData}
-              key={coinData.id}
-              last={index === data.length - 1 ? true : false}
-            />
+          {data.map((coinData) => (
+            <Coin coinData={coinData} key={coinData.id} />
           ))}
         </tbody>
       </table>
@@ -72,7 +70,9 @@ const CryptoList = () => {
   }
 
   return (
-    <div className="p-5 grow flex justify-center items-center">{content}</div>
+    <div className="flex items-center py-5 mx-5 grow overflow-auto">
+      {content}
+    </div>
   );
 };
 

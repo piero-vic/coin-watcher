@@ -8,8 +8,9 @@ const Coin = (props) => {
       current_price,
       market_cap_rank,
       price_change_percentage_24h_in_currency,
+      price_change_percentage_7d_in_currency,
+      market_cap,
     },
-    last,
   } = props;
 
   const priceChangeColor = (priceChange) =>
@@ -17,10 +18,8 @@ const Coin = (props) => {
 
   return (
     <tr className="bg-gray-50">
-      <td className={`text-xs p-2 text-right ${last && "rounded-bl-lg"}`}>
-        {market_cap_rank}
-      </td>
-      <td className="flex p-2 text-right gap-2">
+      <td className="p-2 text-xs text-right">{market_cap_rank}</td>
+      <td className="flex p-2 text-right w-28 gap-2">
         <img className="w-6 h-6" src={image} alt="" />
         <span>{symbol.toUpperCase()}</span>
       </td>
@@ -35,7 +34,7 @@ const Coin = (props) => {
       <td
         className={`p-2 text-right ${priceChangeColor(
           price_change_percentage_24h_in_currency
-        )} ${last && "rounded-br-lg"}`}
+        )}`}
       >
         {(price_change_percentage_24h_in_currency / 100).toLocaleString(
           "en-US",
@@ -46,6 +45,21 @@ const Coin = (props) => {
           }
         )}
       </td>
+      <td
+        className={`p-2 text-right ${priceChangeColor(
+          price_change_percentage_7d_in_currency
+        )}`}
+      >
+        {(price_change_percentage_7d_in_currency / 100).toLocaleString(
+          "en-US",
+          {
+            style: "percent",
+            minimumFractionDigits: 1,
+            maximumFractionDigits: 1,
+          }
+        )}
+      </td>
+      <td className="p-2 text-right">{market_cap}</td>
     </tr>
   );
 };
