@@ -41,8 +41,10 @@ const Coin = (props) => {
 
   return (
     <tr className="bg-gray-50">
-      <td className="p-2 text-xs text-right">{market_cap_rank}</td>
-      <td className="flex p-2 text-right w-28 gap-2">
+      <td className="sticky left-0 p-2 text-xs text-right bg-gray-50">
+        {market_cap_rank}
+      </td>
+      <td className="sticky flex p-2 text-right left-9 w-28 gap-2 bg-gray-50">
         <img className="w-6 h-6" src={image} alt="" />
         <span>{symbol.toUpperCase()}</span>
       </td>

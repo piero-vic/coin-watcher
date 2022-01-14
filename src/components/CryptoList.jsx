@@ -52,8 +52,12 @@ const CryptoList = () => {
       <table className="w-full border-collapse">
         <thead className="bg-gray-100">
           <tr>
-            <th className="p-2 text-xs text-right">#</th>
-            <th className="p-2 text-xs text-left">Coin</th>
+            <th className="sticky left-0 p-2 text-xs text-right bg-gray-100">
+              #
+            </th>
+            <th className="sticky left-9 p-2 text-xs text-left bg-gray-100">
+              Coin
+            </th>
             <th className="p-2 text-xs text-right">Price</th>
             <th className="p-2 text-xs text-right">24h %</th>
             <th className="p-2 text-xs text-right">7d %</th>
