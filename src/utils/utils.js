@@ -14,12 +14,14 @@ export const formatValue = (number) => {
   return number.toLocaleString("en-US", options);
 };
 
-export const priceChangeColor = (priceChange) =>
-  priceChange > 0 ? "text-green-400" : "text-red-400";
-
-export const formatPriceChange = (priceChange) =>
-  (priceChange / 100).toLocaleString("en-US", {
+export const formatPriceChange = (priceChange) => {
+  const formatedPriceChange = (priceChange / 100).toLocaleString("en-US", {
     style: "percent",
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   });
+
+  const priceChangeColor = priceChange > 0 ? "text-green-400" : "text-red-400";
+
+  return [formatedPriceChange, priceChangeColor];
+};
