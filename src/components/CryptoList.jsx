@@ -1,45 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Coin from "./Coin";
-import axios from "axios";
+import useCryptoData from "../hooks/useCryptoData";
 
 const CryptoList = () => {
-  const [data, setData] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
-
-  const getData = () => {
-    axios
-      .get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d",
-        {
-          headers: {
-            "Cache-Control": "no-cache",
-            Pragma: "no-cache",
-            Expires: "0",
-          },
-        }
-      )
-      .then(
-        (res) => {
-          setData(res.data);
-          setIsLoaded(true);
-        },
-        (error) => {
-          setError(error);
-          setIsLoaded(true);
-        }
-      );
-  };
-
-  useEffect(() => {
-    getData();
-
-    const interval = setInterval(() => {
-      getData();
-    }, 90000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const { data, isLoaded, error } = useCryptoData();
 
   let content = null;
 
@@ -55,7 +19,7 @@ const CryptoList = () => {
             <th className="sticky left-0 p-2 text-xs text-right bg-gray-100">
               #
             </th>
-            <th className="sticky left-9 p-2 text-xs text-left bg-gray-100">
+            <th className="sticky p-2 text-xs text-left bg-gray-100 left-9">
               Coin
             </th>
             <th className="p-2 text-xs text-right">Price</th>
@@ -72,9 +36,8 @@ const CryptoList = () => {
       </table>
     );
   }
-
   return (
-    <div className="flex items-center py-5 mx-5 grow overflow-auto">
+    <div className="flex items-center py-5 mx-5 overflow-auto grow">
       {content}
     </div>
   );
