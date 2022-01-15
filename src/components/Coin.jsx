@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  formatValue,
-  formatPriceChange,
-  priceChangeColor,
-} from "../utils/utils";
+import { formatValue, formatPriceChange } from "../utils/utils";
 
 const Coin = (props) => {
   const {
@@ -18,6 +14,14 @@ const Coin = (props) => {
     },
   } = props;
 
+  const [priceChange24, priceChangeColor24] = formatPriceChange(
+    price_change_percentage_24h_in_currency
+  );
+
+  const [priceChange7, priceChangeColor7] = formatPriceChange(
+    price_change_percentage_7d_in_currency
+  );
+
   return (
     <tr className="bg-gray-50">
       <td className="sticky left-0 p-2 text-xs text-right bg-gray-50">
@@ -28,20 +32,10 @@ const Coin = (props) => {
         <span>{symbol.toUpperCase()}</span>
       </td>
       <td className="p-2 text-right">{formatValue(current_price)}</td>
-      <td
-        className={`p-2 text-right ${priceChangeColor(
-          price_change_percentage_24h_in_currency
-        )}`}
-      >
-        {formatPriceChange(price_change_percentage_24h_in_currency)}
+      <td className={`p-2 text-right ${priceChangeColor24}`}>
+        {priceChange24}
       </td>
-      <td
-        className={`p-2 text-right ${priceChangeColor(
-          price_change_percentage_7d_in_currency
-        )}`}
-      >
-        {formatPriceChange(price_change_percentage_7d_in_currency)}
-      </td>
+      <td className={`p-2 text-right ${priceChangeColor7}`}>{priceChange7}</td>
       <td className="p-2 text-right">{formatValue(market_cap)}</td>
     </tr>
   );
