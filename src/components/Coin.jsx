@@ -1,4 +1,5 @@
 import React from "react";
+import { formatValue, formatPriceChange } from "../utils/utils";
 
 const Coin = (props) => {
   const {
@@ -13,31 +14,13 @@ const Coin = (props) => {
     },
   } = props;
 
-  const formatValue = (number) => {
-    const options = {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    };
+  const [priceChange24, priceChangeColor24] = formatPriceChange(
+    price_change_percentage_24h_in_currency
+  );
 
-    if (number === 1 || number % 1 !== 0) {
-      options.minimumFractionDigits = 2;
-      options.maximumFractionDigits = 18;
-    }
-
-    return number.toLocaleString("en-US", options);
-  };
-
-  const priceChangeColor = (priceChange) =>
-    priceChange > 0 ? "text-green-400" : "text-red-400";
-
-  const formatPriceChange = (priceChange) =>
-    (priceChange / 100).toLocaleString("en-US", {
-      style: "percent",
-      minimumFractionDigits: 1,
-      maximumFractionDigits: 1,
-    });
+  const [priceChange7, priceChangeColor7] = formatPriceChange(
+    price_change_percentage_7d_in_currency
+  );
 
   return (
     <tr className="bg-gray-50">
@@ -49,20 +32,10 @@ const Coin = (props) => {
         <span>{symbol.toUpperCase()}</span>
       </td>
       <td className="p-2 text-right">{formatValue(current_price)}</td>
-      <td
-        className={`p-2 text-right ${priceChangeColor(
-          price_change_percentage_24h_in_currency
-        )}`}
-      >
-        {formatPriceChange(price_change_percentage_24h_in_currency)}
+      <td className={`p-2 text-right ${priceChangeColor24}`}>
+        {priceChange24}
       </td>
-      <td
-        className={`p-2 text-right ${priceChangeColor(
-          price_change_percentage_7d_in_currency
-        )}`}
-      >
-        {formatPriceChange(price_change_percentage_7d_in_currency)}
-      </td>
+      <td className={`p-2 text-right ${priceChangeColor7}`}>{priceChange7}</td>
       <td className="p-2 text-right">{formatValue(market_cap)}</td>
     </tr>
   );
