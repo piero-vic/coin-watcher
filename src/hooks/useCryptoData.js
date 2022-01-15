@@ -9,9 +9,9 @@ const useCryptoData = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
-  const getData = (url) => {
+  const getData = () => {
     axios
-      .get(url, {
+      .get(URL, {
         headers: {
           "Cache-Control": "no-cache",
           Pragma: "no-cache",
@@ -31,14 +31,14 @@ const useCryptoData = () => {
   };
 
   useEffect(() => {
-    getData(URL);
+    getData();
 
     const interval = setInterval(() => {
-      getData(URL);
+      getData();
     }, 90000);
 
     return () => clearInterval(interval);
-  }, [URL]);
+  }, []);
 
   return { data, isLoaded, error };
 };
