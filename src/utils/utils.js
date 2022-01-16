@@ -6,6 +6,12 @@ export const formatValue = (number) => {
     maximumFractionDigits: 0,
   };
 
+  if (number > 1000000000) {
+    options.minimumFractionDigits = 2;
+    options.maximumFractionDigits = 2;
+    return `${(number / 1000000000).toLocaleString("en-US", options)}B`;
+  }
+
   if (number === 1 || number % 1 !== 0) {
     options.minimumFractionDigits = 2;
     options.maximumFractionDigits = 18;
