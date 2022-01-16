@@ -23,21 +23,25 @@ const Coin = (props) => {
   );
 
   return (
-    <tr className="bg-gray-50">
-      <td className="sticky left-0 p-2 text-xs text-right bg-gray-50">
+    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+      <div className="hidden p-2 text-xs text-right sm:block">
         {market_cap_rank}
-      </td>
-      <td className="sticky flex p-2 text-right left-9 w-28 gap-2 bg-gray-50">
+      </div>
+      <div className="flex p-2 text-right w-28 gap-2">
         <img className="w-6 h-6" src={image} alt="" />
         <span>{symbol.toUpperCase()}</span>
-      </td>
-      <td className="p-2 text-right">{formatValue(current_price)}</td>
-      <td className={`p-2 text-right ${priceChangeColor24}`}>
+      </div>
+      <div className="p-2 text-right">{formatValue(current_price)}</div>
+      <div className={`hidden sm:block p-2 text-right ${priceChangeColor24}`}>
         {priceChange24}
-      </td>
-      <td className={`p-2 text-right ${priceChangeColor7}`}>{priceChange7}</td>
-      <td className="p-2 text-right">{formatValue(market_cap)}</td>
-    </tr>
+      </div>
+      <div className={`hidden md:block p-2 text-right ${priceChangeColor7}`}>
+        {priceChange7}
+      </div>
+      <div className="hidden p-2 text-right lg:block">
+        {formatValue(market_cap)}
+      </div>
+    </div>
   );
 };
 
