@@ -6,32 +6,32 @@ const CryptoList = () => {
   const { data, isLoaded, error } = useCryptoData();
 
   return (
-    <div className="flex items-center py-5 mx-5 overflow-auto grow">
+    <div className="grid place-items-center grow">
       {(() => {
-        if (error) return <div className="mx-auto">Error: {error.message}</div>;
-        if (!isLoaded) return <div className="mx-auto">Loading...</div>;
+        if (error) return <div>Error: {error.message}</div>;
+        if (!isLoaded) return <div>Loading...</div>;
         return (
-          <table className="w-full border-collapse">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="sticky left-0 p-2 text-xs text-right bg-gray-100">
-                  #
-                </th>
-                <th className="sticky p-2 text-xs text-left bg-gray-100 left-9">
-                  Coin
-                </th>
-                <th className="p-2 text-xs text-right">Price</th>
-                <th className="p-2 text-xs text-right">24h %</th>
-                <th className="p-2 text-xs text-right">7d %</th>
-                <th className="p-2 text-xs text-right">Market Cap</th>
-              </tr>
-            </thead>
-            <tbody>
+          <div className="w-11/12 p-4 my-5 bg-gray-100 max-w-screen-lg rounded-2xl">
+            {/* HEADER */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+              <div className="hidden p-2 text-xs text-right sm:block">#</div>
+              <div className="p-2 text-xs text-left">Coin</div>
+              <div className="p-2 text-xs text-right">Price</div>
+              <div className="hidden p-2 text-xs text-right sm:block">
+                24h %
+              </div>
+              <div className="hidden p-2 text-xs text-right md:block">7d %</div>
+              <div className="hidden p-2 text-xs text-right lg:block">
+                Market Cap
+              </div>
+            </div>
+            {/* BODY */}
+            <div>
               {data.map((coinData) => (
                 <Coin coinData={coinData} key={coinData.id} />
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
         );
       })()}
     </div>
