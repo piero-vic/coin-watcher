@@ -1,37 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
+import useToggleMenu from "../hooks/useToggleMenu";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { AiOutlineInfoCircle, AiOutlineGithub } from "react-icons/ai";
 import { BsSun } from "react-icons/bs";
 import { IoDocumentTextOutline } from "react-icons/io5";
 
 const DropdownMenu = () => {
-  const [displayMenu, setDisplayMenu] = useState(false);
-
-  const handleButtonClick = () => {
-    if (displayMenu) {
-      setDisplayMenu(false);
-    } else {
-      setDisplayMenu(true);
-    }
-  };
-
-  const menuRef = useRef();
-
-  useEffect(() => {
-    let handler = (event) => {
-      if (!menuRef.current.contains(event.target)) setDisplayMenu(false);
-    };
-
-    document.addEventListener("mousedown", handler);
-
-    return () => document.removeEventListener("mousedown", handler);
-  });
+  const [displayMenu, menuRef, toggleMenu] = useToggleMenu();
 
   return (
     <div ref={menuRef} className="relative">
       <button
         className="p-2 text-xl border border-white-100 rounded-2xl hover:border-gray-400"
-        onClick={() => handleButtonClick()}
+        onClick={toggleMenu}
       >
         <HiDotsHorizontal />
       </button>
