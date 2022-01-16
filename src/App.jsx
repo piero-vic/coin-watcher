@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-r from-cyan-100 to-blue-100">
+    <div className="flex flex-col min-h-screen font-medium bg-gradient-to-r from-cyan-100 to-blue-100">
       <Header />
       <CryptoList />
       <Footer />
