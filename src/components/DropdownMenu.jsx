@@ -17,7 +17,7 @@ const DropdownMenu = () => {
         <HiDotsHorizontal />
       </button>
       {displayMenu && (
-        <span className="absolute right-0 flex flex-col w-56 p-3 bg-white border top-12 border-white-100 rounded-2xl drop-shadow-xl">
+        <span className="absolute right-0 flex flex-col w-56 p-3 bg-white border top-12 border-white-100 rounded-2xl drop-shadow-xl z-10">
           <a href="" className="flex items-center justify-between p-1">
             <div>About</div>
             <AiOutlineInfoCircle />
