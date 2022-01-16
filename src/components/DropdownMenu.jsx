@@ -11,7 +11,7 @@ const DropdownMenu = () => {
   return (
     <div ref={menuRef} className="relative">
       <button
-        className="p-2 text-xl border border-white-100 rounded-2xl hover:border-gray-400"
+        className="p-2 text-xl bg-white border border-white-100 rounded-2xl hover:border-gray-400"
         onClick={toggleMenu}
       >
         <HiDotsHorizontal />
