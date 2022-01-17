@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import useToggleMenu from "../hooks/useToggleMenu";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { AiOutlineInfoCircle, AiOutlineGithub } from "react-icons/ai";
-import { BsSun } from "react-icons/bs";
+import { BsSun, BsMoon } from "react-icons/bs";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import { ThemeContext } from "../ThemeContext";
 
 const DropdownMenu = () => {
   const [displayMenu, menuRef, toggleMenu] = useToggleMenu();
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
     <div ref={menuRef} className="relative">
@@ -26,10 +28,13 @@ const DropdownMenu = () => {
             <div>GitHub</div>
             <AiOutlineGithub />
           </a>
-          <a href="" className="flex items-center justify-between p-1">
-            <div>Dark Theme</div>
-            <BsSun />
-          </a>
+          <button
+            onClick={toggleDarkMode}
+            className="flex items-center justify-between p-1 font-medium"
+          >
+            <div>{darkMode ? "Light Theme" : "Dark Theme"}</div>
+            {darkMode ? <BsMoon /> : <BsSun />}
+          </button>
           <a href="" className="flex items-center justify-between p-1">
             <div>License</div>
             <IoDocumentTextOutline />
