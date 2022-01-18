@@ -4,7 +4,7 @@ import { HiDotsHorizontal } from "react-icons/hi";
 import { AiOutlineInfoCircle, AiOutlineGithub } from "react-icons/ai";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { IoDocumentTextOutline } from "react-icons/io5";
-import { ThemeContext } from "../ThemeContext";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 const DropdownMenu = () => {
   const [displayMenu, menuRef, toggleMenu] = useToggleMenu();
