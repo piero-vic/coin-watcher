@@ -1,10 +1,14 @@
 import React from "react";
 import DropdownMenu from "./DropdownMenu";
+import NavBar from "./NavBar";
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between p-5">
-      <h1 className="text-lg font-bold">Crypto Dashboard</h1>
+    <header className="items-center justify-between p-5 grid grid-cols-2 sm:grid-cols-3">
+      <h1 className="hidden text-lg font-bold sm:block w-min">
+        Crypto Dashboard
+      </h1>
+      <NavBar />
       <DropdownMenu />
     </header>
   );
