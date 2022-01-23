@@ -15,7 +15,7 @@ const DropdownMenu = () => {
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
-    <div ref={menuRef} className="relative">
+    <div ref={menuRef} className="relative justify-self-end">
       <button
         className="p-2 text-xl bg-white border border-white dark:bg-zinc-900 dark:border-zinc-900 rounded-2xl hover:border-gray-500 dark:hover:border-gray-500"
         onClick={toggleMenu}
