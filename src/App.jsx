@@ -9,7 +9,7 @@ const App = () => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <main className={darkMode && "dark"}>
+    <main className={darkMode ? "dark" : null}>
       <div className="flex flex-col min-h-screen font-medium bg-gradient-to-b from-cyan-100 to-cyan-50 dark:from-slate-800 dark:to-slate-700 dark:text-white">
         <Header />
         <Routes>
