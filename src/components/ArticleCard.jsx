@@ -10,7 +10,7 @@ const ArticleCard = (props) => {
   });
 
   return (
-    <div className="w-11/12 p-4 bg-white dark:bg-zinc-900 max-w-screen-sm rounded-2xl drop-shadow-xl transition hover:scale-[1.02]">
+    <div className="w-11/12 p-4 bg-white dark:bg-zinc-900 max-w-screen-sm rounded-2xl drop-shadow-xl transition-transform hover:scale-[1.02]">
       <a href={article.url}>
         <h2 className="mb-2">{article.title}</h2>
         <p className="text-sm">
