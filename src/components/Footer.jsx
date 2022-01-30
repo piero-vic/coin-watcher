@@ -8,6 +8,10 @@ const Footer = () => {
         Powered by{" "}
         <a href="https://www.coingecko.com/" rel="noreferrer" target="_blank">
           CoinGecko
+        </a>{" "}
+        and{" "}
+        <a href="https://www.messari.io/" rel="noreferrer" target="_blank">
+          Messari
         </a>
       </p>
     </footer>
