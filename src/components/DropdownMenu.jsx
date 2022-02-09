@@ -28,7 +28,12 @@ const DropdownMenu = () => {
             <div>About</div>
             <FiInfo />
           </a>
-          <a href="" className="flex items-center justify-between p-1">
+          <a
+            href="https://github.com/piero-vic/crypto-dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between p-1"
+          >
             <div>GitHub</div>
             <AiOutlineGithub />
           </a>
