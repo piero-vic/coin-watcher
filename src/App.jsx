@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import Header from "./components/Header";
 import CryptoList from "./components/CryptoList";
+import CryptoNews from "./components/CryptoNews";
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import { ThemeContext } from "./contexts/ThemeContext";
@@ -28,9 +29,7 @@ const App = () => {
           <Route
             path="/news"
             element={
-              <div className="grid place-items-center grow">
-                <h1>News page under construction</h1>
-              </div>
+              <CryptoNews />
             }
           />
         </Routes>

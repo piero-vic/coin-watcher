@@ -12,6 +12,10 @@ const Footer = () => {
           rel="noopener noreferrer"
         >
           CoinGecko
+        </a>{" "}
+        and{" "}
+        <a href="https://www.messari.io/" rel="noreferrer" target="_blank">
+          Messari
         </a>
       </p>
     </footer>
