@@ -6,7 +6,7 @@ const CryptoNews = () => {
   const { data, isLoaded, error } = useCryptoNews();
 
   return (
-    <div className="grid place-items-center gap-4 grow">
+    <div className="grid grow place-items-center gap-4">
       {(() => {
         if (error) return <div>Error: {error.message}</div>;
         if (!isLoaded) return <div>Loading...</div>;

@@ -6,18 +6,18 @@ function Modal() {
   const { modalRef, toggleModal } = useContext(ModalContext);
 
   return (
-    <div className="fixed min-h-screen min-w-full top-0 flex justify-center items-center backdrop-brightness-50 dark:text-white">
+    <div className="fixed top-0 flex min-h-screen min-w-full items-center justify-center backdrop-brightness-50 dark:text-white">
       <div
         ref={modalRef}
-        className="text-lg bg-white w-[85vw] max-w-[420px] max-h-[90vh] rounded-2xl dark:bg-zinc-900"
+        className="max-h-[90vh] w-[85vw] max-w-[420px] rounded-2xl bg-white text-lg dark:bg-zinc-900"
       >
-        <header className="p-4 flex justify-between items-center font-medium text-2xl">
+        <header className="flex items-center justify-between p-4 text-2xl font-medium">
           <h1>License</h1>
           <button className="text-2xl" onClick={toggleModal}>
             <FiX />
           </button>
         </header>
-        <div className="p-4 pt-0 text-sm overflow-auto max-h-[70vh]">
+        <div className="max-h-[70vh] overflow-auto p-4 pt-0 text-sm">
           <div className="flex flex-col gap-4">
             <h2 className="text-xl font-medium">MIT License</h2>
             <p>Copyright © 2022 Piero Lescano</p>
