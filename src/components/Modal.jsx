@@ -19,7 +19,7 @@ function Modal() {
         </header>
         <div className="p-4 pt-0 text-sm overflow-auto max-h-[70vh]">
           <div className="flex flex-col gap-4">
-            <h2 className="text-xl font-medium">Crypto Dashboard</h2>
+            <h2 className="text-xl font-medium">MIT License</h2>
             <p>Copyright © 2022 Piero Lescano</p>
             <p>
               Permission is hereby granted, free of charge, to any person
