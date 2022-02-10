@@ -9,10 +9,12 @@ import {
 } from "react-icons/fi";
 import { AiOutlineGithub } from "react-icons/ai";
 import { ThemeContext } from "../contexts/ThemeContext";
+import { ModalContext } from "../contexts/ModalContext";
 
 const DropdownMenu = () => {
   const [displayMenu, menuRef, toggleMenu] = useToggleMenu();
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
+  const { toggleModal } = useContext(ModalContext);
 
   return (
     <div ref={menuRef} className="relative justify-self-end">
@@ -28,7 +30,12 @@ const DropdownMenu = () => {
             <div>About</div>
             <FiInfo />
           </a>
-          <a href="" className="flex items-center justify-between p-1">
+          <a
+            href="https://github.com/piero-vic/crypto-dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-between p-1"
+          >
             <div>GitHub</div>
             <AiOutlineGithub />
           </a>
@@ -39,10 +46,16 @@ const DropdownMenu = () => {
             <div>{darkMode ? "Light Theme" : "Dark Theme"}</div>
             {darkMode ? <FiMoon /> : <FiSun />}
           </button>
-          <a href="" className="flex items-center justify-between p-1">
+          <button
+            onClick={() => {
+              toggleMenu();
+              toggleModal();
+            }}
+            className="flex items-center justify-between p-1"
+          >
             <div>License</div>
             <FiFileText />
-          </a>
+          </button>
         </span>
       )}
     </div>
