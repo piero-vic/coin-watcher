@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col items-center p-5 text-xs gap-2">
+    <footer className="flex flex-col items-center gap-2 p-5 text-xs">
       <p>© 2022 Piero Lescano. All Rights Reserved.</p>
       <p>
         Powered by{" "}
@@ -14,7 +14,11 @@ const Footer = () => {
           CoinGecko
         </a>{" "}
         and{" "}
-        <a href="https://www.messari.io/" rel="noreferrer" target="_blank">
+        <a
+          href="https://www.messari.io/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           Messari
         </a>
       </p>

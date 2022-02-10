@@ -3,7 +3,7 @@ import NavItem from "./NavItem";
 
 const NavBar = () => {
   return (
-    <nav className="flex p-[2px] bg-white border border-white gap-2 w-fit sm:justify-self-center dark:bg-zinc-900 dark:border-zinc-900 rounded-2xl">
+    <nav className="flex w-fit gap-2 rounded-2xl border border-white bg-white p-[2px] dark:border-zinc-900 dark:bg-zinc-900 sm:justify-self-center">
       <NavItem to="/">Chart</NavItem>
       <NavItem to="/portfolio">Portfolio</NavItem>
       <NavItem to="/news">News</NavItem>
