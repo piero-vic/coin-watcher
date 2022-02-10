@@ -26,10 +26,16 @@ const DropdownMenu = () => {
       </button>
       {displayMenu && (
         <span className="absolute right-0 top-12 z-10 flex w-56 flex-col rounded-2xl bg-white p-3 drop-shadow-xl dark:bg-zinc-900">
-          <a href="" className="flex items-center justify-between p-1">
+          <button
+            onClick={() => {
+              toggleMenu();
+              toggleModal("About");
+            }}
+            className="flex items-center justify-between p-1 font-medium"
+          >
             <div>About</div>
             <FiInfo />
-          </a>
+          </button>
           <a
             href="https://github.com/piero-vic/crypto-dashboard"
             target="_blank"
@@ -49,7 +55,7 @@ const DropdownMenu = () => {
           <button
             onClick={() => {
               toggleMenu();
-              toggleModal();
+              toggleModal("MIT License");
             }}
             className="flex items-center justify-between p-1 font-medium"
           >

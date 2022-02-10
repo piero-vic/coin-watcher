@@ -2,11 +2,13 @@ import { createContext, useState, useEffect, useRef } from "react";
 
 export const ModalContext = createContext({});
 
-export const ModalProvider = ({ children }) => {
+export const ModalProvider = (props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState();
 
-  const toggleModal = () => {
+  const toggleModal = (content = false) => {
     setIsOpen(!isOpen);
+    if (content) setModalContent(content);
   };
 
   const modalRef = useRef();
@@ -22,8 +24,9 @@ export const ModalProvider = ({ children }) => {
   }, []);
 
   return (
-    <ModalContext.Provider value={{ isOpen, modalRef, toggleModal }}>
-      {children}
-    </ModalContext.Provider>
+    <ModalContext.Provider
+      value={{ isOpen, modalRef, toggleModal, modalContent }}
+      {...props}
+    />
   );
 };
