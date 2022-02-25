@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Header from "./components/Header";
 import CryptoList from "./components/CryptoList";
 import CryptoNews from "./components/CryptoNews";
+import CoinDetails from "./components/CoinDetails"
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import { ThemeContext } from "./contexts/ThemeContext";
@@ -27,6 +28,7 @@ const App = () => {
             }
           />
           <Route path="/news" element={<CryptoNews />} />
+          <Route path="/:coinId" element={<CoinDetails />} />
         </Routes>
         <Footer />
       </div>
