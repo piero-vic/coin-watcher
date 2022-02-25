@@ -4,16 +4,10 @@ import axios from "axios";
 const useCryptoData = () => {
   const URL = "https://api.coingecko.com/api/v3/coins/markets";
 
-  const REQUEST_HEADER = {
-    "Cache-Control": "no-cache",
-    Pragma: "no-cache",
-    Expires: "0",
-  };
-
   const REQUEST_PARAMS = {
     vs_currency: "usd",
     order: "market_cap_desc",
-    per_page: 100,
+    per_page: 250,
     page: 1,
     sparkline: true,
     price_change_percentage: "1h,24h,7d",
@@ -26,7 +20,6 @@ const useCryptoData = () => {
   const getData = async () => {
     try {
       const response = await axios.get(URL, {
-        headers: REQUEST_HEADER,
         params: REQUEST_PARAMS,
       });
       setData(response.data);
