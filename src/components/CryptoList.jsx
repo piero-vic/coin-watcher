@@ -1,9 +1,11 @@
-import React from "react";
-import Coin from "./Coin";
+import React, { useState } from "react";
 import useCryptoData from "../hooks/useCryptoData";
+import Coin from "./Coin";
+import Pagination from "./Pagination";
 
 const CryptoList = () => {
   const { data, isLoaded, error } = useCryptoData();
+  const [page, setPage] = useState(1);
 
   return (
     <div className="grid grow place-items-center">
@@ -23,10 +25,14 @@ const CryptoList = () => {
             </div>
             {/* BODY */}
             <div>
-              {data.map((coinData) => (
-                <Coin coinData={coinData} key={coinData.id} />
-              ))}
+              {data
+                .slice((page - 1) * 10, (page - 1) * 10 + 10)
+                .map((coinData) => (
+                  <Coin coinData={coinData} key={coinData.id} />
+                ))}
             </div>
+            {/* FOOTER */}
+            <Pagination page={page} setPage={setPage} />
           </div>
         );
       })()}
