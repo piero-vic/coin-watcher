@@ -1,30 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import useCryptoData from "../hooks/useCryptoData";
 import { formatValue } from "../utils/utils";
+import { SingleCoin } from "../utils/api";
 
 const CoinDetails = () => {
   const { coinId } = useParams();
 
-  const [coin, setCoin] = useState();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
-
-  const fetchCoin = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${coinId}`
-      );
-      setCoin(response.data);
-    } catch (error) {
-      setError(error);
-    }
-    setIsLoaded(true);
-  };
-
-  useEffect(() => {
-    fetchCoin();
-  }, []);
+  const { data: coin, isLoaded, error } = useCryptoData(SingleCoin(coinId));
 
   return (
     <div className="grid grow place-items-center">
@@ -48,12 +31,12 @@ const CoinDetails = () => {
               </p>
             </div>
             {/* DATA */}
-            <div className="mt-4 flex flex-col md:flex-row gap-4">
-              <div className="w-full md:w-5/12 rounded-2xl bg-white p-4 drop-shadow-xl dark:bg-zinc-900">
-                This is where the data will be. 
+            <div className="mt-4 flex flex-col gap-4 md:flex-row">
+              <div className="w-full rounded-2xl bg-white p-4 drop-shadow-xl dark:bg-zinc-900 md:w-5/12">
+                This is where the data will be.
               </div>
               <div className="w-full rounded-2xl bg-white p-4 drop-shadow-xl dark:bg-zinc-900">
-                This is where the chart will be. 
+                This is where the chart will be.
               </div>
             </div>
           </div>
