@@ -15,7 +15,7 @@ export const ModalProvider = (props) => {
 
   useEffect(() => {
     let handler = (event) => {
-      if (!modalRef.current.contains(event.target)) setIsOpen(false);
+      if (!modalRef.current?.contains(event.target)) setIsOpen(false);
     };
 
     document.addEventListener("mousedown", handler);
