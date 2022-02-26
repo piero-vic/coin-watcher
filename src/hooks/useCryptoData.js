@@ -6,19 +6,19 @@ const useCryptoData = (url) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
 
-  const getData = async () => {
-    try {
-      const response = await axios.get(url);
-      setData(response.data);
-    } catch (error) {
-      setError(error);
-    }
-    setIsLoaded(true);
-  };
-
   useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(url);
+        setData(response.data);
+      } catch (error) {
+        setError(error);
+      }
+      setIsLoaded(true);
+    };
+
     getData();
-  }, []);
+  }, [url]);
 
   return { data, isLoaded, error };
 };
