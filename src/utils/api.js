@@ -3,3 +3,5 @@ export const CoinList = (currency) =>
 
 export const SingleCoin = (id) =>
   `https://api.coingecko.com/api/v3/coins/${id}`;
+
+export const News = () => "https://data.messari.io/api/v1/news";
