@@ -3,18 +3,19 @@ import { useParams } from "react-router-dom";
 import useCryptoData from "../hooks/useCryptoData";
 import { formatValue } from "../utils/utils";
 import { SingleCoin } from "../utils/api";
+import LineChart from "./LineChart";
 
 const CoinDetails = () => {
   const { coinId } = useParams();
   const { data: coin, isLoaded, error } = useCryptoData(SingleCoin(coinId));
 
   return (
-    <div className="grid grow place-items-center">
+    <div className="grow flex items-center justify-center">
       {(() => {
         if (error) return <div>Error: {error.message}</div>;
-        if (!isLoaded) return <div>Loading...</div>;
+        if (!isLoaded) return <div className="mx-auto">Loading...</div>;
         return (
-          <div className="w-full place-self-start px-5">
+          <div className="w-full max-w-screen-xl mx-auto px-5">
             {/* HEADER */}
             <div>
               <p className="flex items-baseline gap-2">
@@ -29,10 +30,11 @@ const CoinDetails = () => {
                 </span>
               </p>
             </div>
-            {/* DATA */}
-            <div className="mt-4 flex flex-col gap-4 md:flex-row">
+            <div className="flex flex-col md:flex-row gap-4 mt-4">
+              {/* CHART */}
+              <LineChart coinId={coinId} />
               {/* INFO */}
-              <div className="flex w-full flex-col gap-2 rounded-2xl bg-white p-4 drop-shadow-xl dark:bg-zinc-900 md:w-5/12">
+              <div className="md:order-first md:w-4/12 flex w-full flex-col gap-2 rounded-2xl bg-white p-4 drop-shadow-xl dark:bg-zinc-900">
                 <div>
                   <p className="font-medium opacity-60">Market Cap</p>
                   <p>{formatValue(coin.market_data.market_cap.usd)}</p>
@@ -60,10 +62,6 @@ const CoinDetails = () => {
                   <p className="font-medium opacity-60">Max Supply</p>
                   <p>{coin.market_data.max_supply?.toLocaleString("en-US") || "∞"}</p>
                 </div>
-              </div>
-              {/* CHART */}
-              <div className="w-full rounded-2xl bg-white p-4 drop-shadow-xl dark:bg-zinc-900">
-                This is where the chart will be.
               </div>
             </div>
           </div>
