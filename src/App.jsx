@@ -19,14 +19,6 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<CryptoList />} />
-          <Route
-            path="/portfolio"
-            element={
-              <div className="grid grow place-items-center">
-                <h1>Portfolio page under construction</h1>
-              </div>
-            }
-          />
           <Route path="/news" element={<CryptoNews />} />
           <Route path="/:coinId" element={<CoinDetails />} />
         </Routes>
