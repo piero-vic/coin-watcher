@@ -7,11 +7,14 @@ const useCryptoData = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let isSubscribed = true;
     axios
       .get(url)
-      .then((response) => setData(response.data))
-      .catch((error) => setError(error))
-      .finally(() => setIsLoaded(true));
+      .then((response) => (isSubscribed ? setData(response.data) : null))
+      .catch((error) => (isSubscribed ? setError(error) : null))
+      .finally(() => (isSubscribed ? setIsLoaded(true) : null));
+
+    return () => (isSubscribed = false);
   }, [url]);
 
   return { data, isLoaded, error };
