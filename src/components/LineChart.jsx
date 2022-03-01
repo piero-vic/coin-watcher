@@ -4,7 +4,7 @@ import { HistoricalData } from "../utils/api"
 import { Area, AreaChart, ResponsiveContainer } from 'recharts';
 
 const LineChart = (props) => {
-  const { coinId } = props;
+  const { coinId, color } = props;
 
   const { data, isLoaded, error } = useCryptoData(HistoricalData(coinId, 365, "weekly", "usd"))
 
@@ -16,7 +16,13 @@ const LineChart = (props) => {
         return (
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={data.prices.map((item) => ({ date: item[0], price: item[1] }))}>
-              <Area dataKey="price" />
+              <defs>
+                <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor={color} stopOpacity={0.8}/>
+                  <stop offset="95%" stopColor={color} stopOpacity={0}/>
+                </linearGradient>
+              </defs>
+              <Area dataKey="price" stroke={color} fill="url(#color)" />
             </AreaChart> 
           </ResponsiveContainer>
         )
