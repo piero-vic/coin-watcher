@@ -9,7 +9,7 @@ const CryptoList = () => {
   const [page, setPage] = useState(1);
 
   return (
-    <div className="grid grow place-items-center">
+    <div className="grid place-items-center">
       {(() => {
         if (error) return <div>Error: {error.message}</div>;
         if (!isLoaded) return <div>Loading...</div>;

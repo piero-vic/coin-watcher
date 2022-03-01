@@ -7,7 +7,7 @@ const CryptoNews = () => {
   const { data, isLoaded, error } = useCryptoData(News());
 
   return (
-    <div className="grid grow place-items-center gap-4">
+    <div className="grid place-items-center gap-4">
       {(() => {
         if (error) return <div>Error: {error.message}</div>;
         if (!isLoaded) return <div>Loading...</div>;
