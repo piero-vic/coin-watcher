@@ -11,7 +11,7 @@ const CoinDetails = () => {
   const { data: coin, isLoaded, error } = useCryptoData(SingleCoin(coinId));
 
   return (
-    <div className="flex grow items-center justify-center">
+    <div className="flex items-center justify-center">
       {(() => {
         if (error) return <div>Error: {error.message}</div>;
         if (!isLoaded) return <div className="mx-auto">Loading...</div>;

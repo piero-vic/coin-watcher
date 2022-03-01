@@ -9,7 +9,7 @@ const LineChart = (props) => {
   const { data, isLoaded, error } = useCryptoData(HistoricalData(coinId, 365, "weekly", "usd"))
 
   return (
-    <div className="md:w-8/12 h-40 md:h-auto rounded-2xl bg-white p-4 drop-shadow-xl dark:bg-zinc-900">
+    <div className="md:w-8/12 h-40 md:h-auto max-h-full rounded-2xl bg-white p-4 drop-shadow-xl dark:bg-zinc-900">
       {(() => {
         if (error) return <div>Error: {error.message}</div>;
         if (!isLoaded) return <div>Loading...</div>;
