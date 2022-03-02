@@ -1,8 +1,17 @@
 import React from "react";
-import { formatValue } from "../utils/utils";
+import { formatValue, formatPriceChange } from "../utils/utils";
 
 const CoinHeader = (props) => {
-  const { name, image, symbol, market_data } = props.coin
+  const {
+    name,
+    image,
+    symbol,
+    market_data: { current_price, price_change_percentage_24h },
+  } = props.coin;
+
+  const [priceChange, priceChangeColor] = formatPriceChange(
+    price_change_percentage_24h
+  );
 
   return (
     <div>
@@ -12,13 +21,11 @@ const CoinHeader = (props) => {
         <span className="opacity-60">{`${symbol.toUpperCase()}`}</span>
       </p>
       <p className="flex items-baseline gap-2 text-2xl">
-        <span>{formatValue(market_data.current_price.usd)}</span>
-        <span className="text-base">
-          {market_data.price_change_percentage_24h}
-        </span>
+        <span>{formatValue(current_price.usd)}</span>
+        <span className={`text-base ${priceChangeColor}`}>{priceChange}</span>
       </p>
     </div>
-  )
-}
+  );
+};
 
 export default CoinHeader;
