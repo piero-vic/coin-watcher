@@ -1,7 +1,7 @@
 import React from "react";
 import useCryptoData from "../hooks/useCryptoData";
 import { HistoricalData } from "../utils/api";
-import { Area, AreaChart, ResponsiveContainer } from "recharts";
+import { Area, AreaChart, ResponsiveContainer, YAxis } from "recharts";
 
 const LineChart = (props) => {
   const { coinId, color, period } = props;
@@ -27,6 +27,7 @@ const LineChart = (props) => {
                   <stop offset="95%" stopColor={color} stopOpacity={0} />
                 </linearGradient>
               </defs>
+              <YAxis dataKey="price" hide domain={["dataMin", "dataMax"]} />
               <Area dataKey="price" stroke={color} fill="url(#color)" />
             </AreaChart>
           </ResponsiveContainer>
