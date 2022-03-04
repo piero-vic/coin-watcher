@@ -4,7 +4,7 @@ export const CoinList = (currency) =>
 export const SingleCoin = (id) =>
   `https://api.coingecko.com/api/v3/coins/${id}`;
 
-export const HistoricalData = (id, days, interval ,currency) =>
-  `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}&interval=${interval}`;
+export const HistoricalData = (id, days, currency) =>
+  `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`;
 
 export const News = () => "https://data.messari.io/api/v1/news";
