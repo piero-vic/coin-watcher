@@ -19,7 +19,7 @@ const CoinDetails = () => {
 
         return (
           <div className="mx-auto w-full max-w-screen-xl px-5">
-            <CoinHeader coin={coin} setPeriod={setPeriod} />
+            <CoinHeader coin={coin} period={period} setPeriod={setPeriod} />
             <div className="mt-4 flex flex-col gap-4 md:flex-row">
               <LineChart coinId={coinId} color="#82ca9d" period={period} />
               <CoinMarketInfo marketData={coin.market_data} />
