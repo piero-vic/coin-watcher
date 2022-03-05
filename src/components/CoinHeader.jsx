@@ -1,8 +1,9 @@
 import React from "react";
+import TimeFrameSelector from "./TimeFrameSelector"
 import { formatValue, formatPriceChange } from "../utils/utils";
 
 const CoinHeader = (props) => {
-  const { setPeriod } = props;
+  const { period, setPeriod } = props;
 
   const {
     name,
@@ -28,13 +29,7 @@ const CoinHeader = (props) => {
           <span className={`text-base ${priceChangeColor}`}>{priceChange}</span>
         </p>
       </div>
-      <div className="flex gap-1 rounded-2xl border border-white bg-white p-[2px] text-sm dark:border-zinc-900 dark:bg-zinc-900">
-        <button className="rounded-2xl py-1 px-2" onClick={() => setPeriod(1)}>1D</button>
-        <button className="rounded-2xl py-1 px-2" onClick={() => setPeriod(7)}>7D</button>
-        <button className="rounded-2xl py-1 px-2" onClick={() => setPeriod(30)}>1M</button>
-        <button className="rounded-2xl py-1 px-2" onClick={() => setPeriod(90)}>3M</button>
-        <button className="rounded-2xl py-1 px-2" onClick={() => setPeriod(365)}>1Y</button>
-      </div>
+      <TimeFrameSelector period={period} setPeriod={setPeriod} />
     </div>
   );
 };
