@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Header from "./components/Header";
 import CryptoList from "./components/CryptoList";
 import CryptoNews from "./components/CryptoNews";
+import CoinDetails from "./components/CoinDetails"
 import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import { ThemeContext } from "./contexts/ThemeContext";
@@ -14,19 +15,12 @@ const App = () => {
 
   return (
     <main className={`relative ${darkMode ? "dark" : null}`}>
-      <div className="flex min-h-screen flex-col bg-gradient-to-b from-cyan-100 to-cyan-50 font-medium dark:from-slate-800 dark:to-slate-700 dark:text-white">
+      <div className="flex min-h-screen flex-col justify-between bg-gradient-to-b from-cyan-100 to-cyan-50 font-medium dark:from-slate-800 dark:to-slate-700 dark:text-white">
         <Header />
         <Routes>
           <Route path="/" element={<CryptoList />} />
-          <Route
-            path="/portfolio"
-            element={
-              <div className="grid grow place-items-center">
-                <h1>Portfolio page under construction</h1>
-              </div>
-            }
-          />
           <Route path="/news" element={<CryptoNews />} />
+          <Route path="/:coinId" element={<CoinDetails />} />
         </Routes>
         <Footer />
       </div>
