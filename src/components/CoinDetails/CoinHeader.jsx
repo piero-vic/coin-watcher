@@ -1,6 +1,6 @@
 import React from "react";
-import TimeFrameSelector from "./TimeFrameSelector"
-import { formatValue, formatPriceChange } from "../utils/utils";
+import TimeFrameSelector from "./TimeFrameSelector";
+import { formatValue, formatPriceChange } from "../../utils/utils";
 
 const CoinHeader = (props) => {
   const { period, setPeriod } = props;

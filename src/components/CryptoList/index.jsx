@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import useCryptoData from "../hooks/useCryptoData";
+import useCryptoData from "../../hooks/useCryptoData";
 import Coin from "./Coin";
 import Pagination from "./Pagination";
-import { CoinList } from "../utils/api";
+import { CoinList } from "../../utils/api";
 
 const CryptoList = () => {
   const { data, isLoaded, error } = useCryptoData(CoinList("usd"));

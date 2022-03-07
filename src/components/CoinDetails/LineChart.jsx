@@ -1,6 +1,6 @@
 import React from "react";
-import useCryptoData from "../hooks/useCryptoData";
-import { HistoricalData } from "../utils/api";
+import useCryptoData from "../../hooks/useCryptoData";
+import { HistoricalData } from "../../utils/api";
 import { Area, AreaChart, ResponsiveContainer, YAxis } from "recharts";
 
 const LineChart = (props) => {
