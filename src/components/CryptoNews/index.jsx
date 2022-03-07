@@ -1,7 +1,7 @@
 import React from "react";
 import ArticleCard from "./ArticleCard";
-import useCryptoData from "../hooks/useCryptoData";
-import { News } from "../utils/api"
+import useCryptoData from "../../hooks/useCryptoData";
+import { News } from "../../utils/api"
 
 const CryptoNews = () => {
   const { data, isLoaded, error } = useCryptoData(News());

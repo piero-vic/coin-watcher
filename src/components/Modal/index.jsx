@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { ModalContext } from "../contexts/ModalContext";
+import { ModalContext } from "../../contexts/ModalContext";
 import { FiX } from "react-icons/fi";
-import coingeckoLogo from "../assets/CoinGeckoLogo.png";
-import messariLogo from "../assets/MessariLogo.svg";
+import coingeckoLogo from "../../assets/CoinGeckoLogo.png";
+import messariLogo from "../../assets/MessariLogo.svg";
 
 const Modal = () => {
   const { modalRef, toggleModal, modalContent } = useContext(ModalContext);
