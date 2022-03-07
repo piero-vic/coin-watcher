@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom"
-import { formatValue, formatPriceChange } from "../utils/utils";
+import { formatValue, formatPriceChange } from "../../utils/utils";
 
 const Coin = (props) => {
   const {
