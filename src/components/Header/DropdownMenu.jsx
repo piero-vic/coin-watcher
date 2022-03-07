@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import useToggleMenu from "../hooks/useToggleMenu";
+import useToggleMenu from "../../hooks/useToggleMenu";
 import {
   FiFileText,
   FiInfo,
@@ -8,8 +8,8 @@ import {
   FiSun,
 } from "react-icons/fi";
 import { AiOutlineGithub } from "react-icons/ai";
-import { ThemeContext } from "../contexts/ThemeContext";
-import { ModalContext } from "../contexts/ModalContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
+import { ModalContext } from "../../contexts/ModalContext";
 
 const DropdownMenu = () => {
   const [displayMenu, menuRef, toggleMenu] = useToggleMenu();
