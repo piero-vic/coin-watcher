@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import useCryptoData from "../hooks/useCryptoData";
-import { SingleCoin } from "../utils/api";
+import useCryptoData from "../../hooks/useCryptoData";
+import { SingleCoin } from "../../utils/api";
 import CoinHeader from "./CoinHeader";
 import LineChart from "./LineChart";
 import CoinMarketInfo from "./CoinMarketInfo";

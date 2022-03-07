@@ -1,5 +1,5 @@
 import React from "react";
-import { formatValue } from "../utils/utils";
+import { formatValue } from "../../utils/utils";
 
 const CoinMarketInfo = (props) => {
   const {
