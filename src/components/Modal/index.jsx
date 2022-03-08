@@ -33,7 +33,7 @@ const About = () => {
   return (
     <>
       <p className="text-xl">
-        Crypto Dashboard is a web application that displays crypto prices and
+        Coin Watcher is a web application that displays crypto prices and
         news.
       </p>
       <p>The app uses the following third-party APIs:</p>
