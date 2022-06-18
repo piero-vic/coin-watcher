@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
-import { ModalContext } from "../../contexts/ModalContext";
+import React from "react";
 import { FiX } from "react-icons/fi";
 import coingeckoLogo from "../../assets/CoinGeckoLogo.png";
 import messariLogo from "../../assets/MessariLogo.svg";
 
-const Modal = () => {
-  const { modalRef, toggleModal, modalContent } = useContext(ModalContext);
-
+const Modal = ({ modalRef, toggleModal, modalContent }) => {
   return (
     <div className="fixed top-0 flex min-h-screen min-w-full items-center justify-center backdrop-brightness-50 dark:text-white">
       <div
@@ -33,8 +30,7 @@ const About = () => {
   return (
     <>
       <p className="text-xl">
-        Coin Watcher is a web application that displays crypto prices and
-        news.
+        Coin Watcher is a web application that displays crypto prices and news.
       </p>
       <p>The app uses the following third-party APIs:</p>
       <div className="flex flex-col gap-2 rounded-2xl bg-stone-100 p-4 dark:bg-zinc-800">

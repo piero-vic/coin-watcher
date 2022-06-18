@@ -9,12 +9,10 @@ import {
 } from "react-icons/fi";
 import { AiOutlineGithub } from "react-icons/ai";
 import { ThemeContext } from "../../contexts/ThemeContext";
-import { ModalContext } from "../../contexts/ModalContext";
 
-const DropdownMenu = () => {
+const DropdownMenu = ({ toggleModal }) => {
   const [displayMenu, menuRef, toggleMenu] = useToggleMenu();
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
-  const { toggleModal } = useContext(ModalContext);
 
   return (
     <div ref={menuRef} className="relative justify-self-end">
