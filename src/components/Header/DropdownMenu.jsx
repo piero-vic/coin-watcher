@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import useToggleMenu from "../../hooks/useToggleMenu";
+import usePopup from "../../hooks/usePopup";
 import {
   FiFileText,
   FiInfo,
@@ -11,7 +11,7 @@ import { AiOutlineGithub } from "react-icons/ai";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
 const DropdownMenu = ({ toggleModal }) => {
-  const [displayMenu, menuRef, toggleMenu] = useToggleMenu();
+  const { isOpen, popupRef: menuRef, togglePopup: toggleMenu } = usePopup();
   const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
@@ -22,7 +22,7 @@ const DropdownMenu = ({ toggleModal }) => {
       >
         <FiMoreHorizontal />
       </button>
-      {displayMenu && (
+      {isOpen && (
         <span className="absolute right-0 top-12 z-10 flex w-56 flex-col rounded-2xl bg-white p-3 drop-shadow-xl dark:bg-zinc-900">
           <button
             onClick={() => {

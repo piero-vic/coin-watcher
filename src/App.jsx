@@ -9,11 +9,11 @@ import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { Route, Routes, Link } from "react-router-dom";
-import useModal from "./hooks/useModal";
+import usePopup from "./hooks/usePopup";
 
 const App = () => {
   const { darkMode } = useContext(ThemeContext);
-  const { isOpen, modalRef, toggleModal, modalContent } = useModal();
+  const { isOpen, popupRef, togglePopup, popupContent } = usePopup();
 
   return (
     <div className={`relative ${darkMode ? "dark" : null}`}>
@@ -23,7 +23,7 @@ const App = () => {
             Coin Watcher
           </Link>
           <NavBar />
-          <DropdownMenu toggleModal={toggleModal} />
+          <DropdownMenu toggleModal={togglePopup} />
         </Header>
 
         <main className="flex flex-col items-center justify-center gap-4">
@@ -39,9 +39,9 @@ const App = () => {
 
       {isOpen ? (
         <Modal
-          modalRef={modalRef}
-          toggleModal={toggleModal}
-          modalContent={modalContent}
+          modalRef={popupRef}
+          toggleModal={togglePopup}
+          modalContent={popupContent}
         />
       ) : null}
     </div>
