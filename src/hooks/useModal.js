@@ -1,8 +1,6 @@
-import { createContext, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
-export const ModalContext = createContext({});
-
-export const ModalProvider = (props) => {
+const useModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState();
 
@@ -23,10 +21,7 @@ export const ModalProvider = (props) => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  return (
-    <ModalContext.Provider
-      value={{ isOpen, modalRef, toggleModal, modalContent }}
-      {...props}
-    />
-  );
+  return { isOpen, modalRef, toggleModal, modalContent };
 };
+
+export default useModal;
