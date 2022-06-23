@@ -1,11 +1,7 @@
 import React from "react";
 
 const PaginationButton = (props) => {
-  const { page, setPage, content } = props;
-
-  const onClick = () =>
-    content === "←" ? setPage(page - 1) : setPage(page + 1);
-  const disabled = content === "←" ? page === 1 : page === 25;
+  const { onClick, disabled, children } = props;
 
   return (
     <button
@@ -13,7 +9,7 @@ const PaginationButton = (props) => {
       onClick={onClick}
       disabled={disabled}
     >
-      {content}
+      {children}
     </button>
   );
 };
@@ -21,11 +17,14 @@ const PaginationButton = (props) => {
 const Pagination = (props) => {
   const { page, setPage } = props;
 
+  const nextPage = () => setPage((p) => p + 1);
+  const prevPage = () => setPage((p) => p - 1);
+
   return (
     <div className="mt-2 flex items-center justify-center">
-      <PaginationButton page={page} setPage={setPage} content="←" />
+      <PaginationButton onClick={prevPage} disabled={page === 1} children="←" />
       <span>Page {page} of 25</span>
-      <PaginationButton page={page} setPage={setPage} content="→" />
+      <PaginationButton onClick={nextPage} disabled={page === 25} children="→" />
     </div>
   );
 };
